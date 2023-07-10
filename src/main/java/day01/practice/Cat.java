@@ -25,13 +25,14 @@ public class Cat {
     public String getColor() {
         return color;
     }
+    
 
     public void setColor(String color) {
         this.color = color;
     }
 
 	public void speak() {
-        System.out.println("Speaks: Woof!");
+        System.out.println("Speaks: Meow!");
     }
 
     // Main method to create Cat objects
