@@ -29,7 +29,8 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student name=" + name + ", id=" + id  + department;
+        return "Student name=" + name + ", id=" + id  + department
+        		;
     }
 }
 public class Main {
