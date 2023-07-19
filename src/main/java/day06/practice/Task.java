@@ -12,14 +12,12 @@ public class Task {
 		this.priority = priority;
 	}
 	
+
 	public String toString() {
 		return "Task Name " + taskName +" Priority " + priority;
 	}
 	
-    public boolean findTaskByName(String name,ArrayList<Task> tasks) {
-	   
-    }
-	
+    
 	
 	public static void main(String[] args) {
         ArrayList<Task> Ar = new ArrayList<>();
