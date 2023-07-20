@@ -5,7 +5,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class EmployeeList {
-	public static void main(String[] args) {
+
+    public static void main(String[] args) {
         HashMap<String, String> arr = new HashMap<>();
         Scanner sc = new Scanner(System.in);
         int x = 5;
@@ -23,4 +24,5 @@ public class EmployeeList {
         }
 
     }
+
 }
