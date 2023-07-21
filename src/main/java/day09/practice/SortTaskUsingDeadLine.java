@@ -50,6 +50,6 @@ public class SortTaskUsingDeadLine {
         for (Task i : arr) {
             System.out.println(i);
         }
-
+       
     }
 }
