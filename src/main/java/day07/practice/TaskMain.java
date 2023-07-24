@@ -25,13 +25,12 @@ public class TaskMain {
         for (Task i: distinctTask) {
             System.out.println(i);
         }
-
     }
 }
 
 
 class Task{
-	 private int id;
+	    private int id;
 	    private String name;
 	    private LocalDate deadline;
 

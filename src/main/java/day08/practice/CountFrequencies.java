@@ -19,3 +19,8 @@ public class CountFrequencies {
         arr.forEach((name,count) -> System.out.println(name + " : "+ count));
     }
 }
+
+
+
+
+

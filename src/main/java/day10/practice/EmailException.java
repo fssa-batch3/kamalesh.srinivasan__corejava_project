@@ -7,13 +7,13 @@ public class EmailException {
 	public static void main(String[] args) {
 		try {
 		
-		String regEx = "^[a-z][a-z0-9._-]*@[a-z0-9.-]+\\\\.[a-z]{2,}$";
+		String regEx = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 		String Email = "kamales@gmail.com";
 		Pattern pattern = Pattern.compile(regEx);
 		
 		Matcher matcher = pattern.matcher(Email);
 
-		if (matcher.find() == true) {
+		if (matcher.find()) {
 			System.out.format("Valid Email Id");
 		}
 		else {

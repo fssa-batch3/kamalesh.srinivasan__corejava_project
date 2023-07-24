@@ -43,7 +43,7 @@ public class HashCodeEqualsDemo {
 		Employee emp2 = new Employee(23);
 		
 		ArrayList a = new ArrayList();
-		a.hashCode();
+		System.out.println(a.hashCode());
 		System.out.println("emp1.equals(emp2)--->>>" + emp1.hashCode());
 		System.out.println("emp1.equals(emp2)--->>>" + emp2.hashCode());
 		System.out.println("emp1.equals(emp2)--->>>" + emp1.equals(emp2));
@@ -51,6 +51,7 @@ public class HashCodeEqualsDemo {
 		ArrayList<Employee> empList = new ArrayList<Employee>();
 		empList.add(emp1);
 		empList.add(emp2);
+		System.out.println(empList);
 		System.out.println("ArrayList size:" + empList.size());
 
 		HashSet<Employee> setOfEmps = new HashSet<>();
