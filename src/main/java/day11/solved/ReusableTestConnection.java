@@ -1,4 +1,4 @@
-package weeklyAssessment2;
+package day11.solved;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

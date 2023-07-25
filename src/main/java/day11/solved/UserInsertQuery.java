@@ -1,4 +1,4 @@
-package weeklyAssessment2;
+package day11.solved;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,10 +27,7 @@ public class UserInsertQuery {
          
          
         //Step 04: close the connection resources       
-        ConnectionUtil.close(connection, stmt, null);
-         
-         
-         
+        ConnectionUtil.close(connection, stmt, null);       
     }
      
 }

@@ -12,7 +12,6 @@ public class EmailException {
 		Pattern pattern = Pattern.compile(regEx);
 		
 		Matcher matcher = pattern.matcher(Email);
-
 		if (matcher.find()) {
 			System.out.format("Valid Email Id");
 		}

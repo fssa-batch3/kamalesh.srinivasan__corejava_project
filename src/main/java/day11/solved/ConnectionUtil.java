@@ -1,4 +1,4 @@
-package weeklyAssessment2;
+package day11.solved;
 
 
 import java.sql.Connection;
@@ -12,7 +12,7 @@ public class ConnectionUtil {
     public static Connection getConnection()  {
  
         Connection con = null;
-        String url = "jdbc:mysql://localhost/project";
+        String url = "jdbc:mysql://localhost/task";
         String userName = "root";
         String passWord = "root";
         try {
