@@ -12,7 +12,7 @@ class Task {
 
 class TaskDAO {
 	
-	public void createTask(Task task) throws SQLException {
+	public void createTask(MainExecute task) throws SQLException {
 		// Write code here to get connection
 		  Connection connection = ConnectionUtil.getConnection();
 		// Create insert statement
