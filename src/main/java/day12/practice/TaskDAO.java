@@ -1,82 +1,71 @@
 package day12.practice;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import day11.practice.DAOException;
+public class TaskDAO {
+    private final String url = "jdbc:mysql://localhost/project";
+    private final String username = "root";
+    private final String password = "root";
 
-class Task {
-	int id;
-	String name;
-	String status;
-}
+    public void createTask(Task task) throws DAOException {
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            String insertQuery = "INSERT INTO task (id, task, status) VALUES (?, ?, ?)";
+            try (PreparedStatement pstmt = conn.prepareStatement(insertQuery)) {
+                pstmt.setInt(1, task.id);
+                pstmt.setString(2, task.name);
+                pstmt.setString(3, task.status);
+                pstmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Error creating task", e);
+        }
+    }
 
-class TaskDAO {
+    public void updateTask(Task task) throws DAOException {
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            String updateQuery = "UPDATE task SET task = ?, status = ? WHERE id = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(updateQuery)) {
+                pstmt.setString(1, task.name);
+                pstmt.setString(2, task.status);
+                pstmt.setInt(3, task.id);
+                pstmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Error updating task", e);
+        }
+    }
 
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/project";
-	private static final String DB_USERNAME = "root";
-	private static final String DB_PASSWORD = "root";
+    public void deleteTask(int taskId) throws DAOException {
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            String deleteQuery = "DELETE FROM task WHERE id = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(deleteQuery)) {
+                pstmt.setInt(1, taskId);
+                pstmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Error deleting task", e);
+        }
+    }
 
-	public void createTask(Task task) throws DAOException {
-		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
-			PreparedStatement Statement = connection
-					.prepareStatement("INSERT INTO task (id, name, status) VALUES (?, ?, ?)");
-			Statement.setInt(1, task.id);
-			Statement.setString(2, task.name);
-			Statement.setString(3, task.status);
-			Statement.executeUpdate();
-		} catch (SQLException e) {
-			throw new DAOException("Error creating task: " + e.getMessage());
-		}
-	}
-
-	public void updateTask(Task task) throws DAOException {
-		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
-
-			PreparedStatement statement = connection
-					.prepareStatement("UPDATE task SET name = ?, status = ? WHERE id = ?");
-			statement.setString(1, task.name);
-			statement.setString(2, task.status);
-			statement.setInt(3, task.id);
-			statement.executeUpdate();
-		} catch (SQLException e) {
-			throw new DAOException("Error updating task: " + e.getMessage());
-		}
-	}
-
-	public void deleteTask(int taskId) throws DAOException {
-		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
-
-			PreparedStatement statement = connection.prepareStatement("DELETE FROM task WHERE id = ?");
-			statement.setInt(1, 2);
-			statement.executeUpdate();
-		} catch (SQLException e) {
-			throw new DAOException("Error deleting task: " + e.getMessage());
-		}
-	}
-
-	public List<Task> getAllTasks() throws DAOException {
-		List<Task> tasks = new ArrayList<>();
-		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
-
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM task");
-			while (resultSet.next()) {
-				Task task = new Task();
-				task.id = resultSet.getInt("id");
-				task.name = resultSet.getString("name");
-				task.status = resultSet.getString("status");
-				tasks.add(task);
-			}
-		} catch (SQLException e) {
-			throw new DAOException("Error getting all tasks: " + e.getMessage());
-		}
-		return tasks;
-	}
+    public List<Task> getAllTasks() throws DAOException {
+        List<Task> tasks = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            String selectQuery = "SELECT id, task, status FROM task";
+            try (Statement stmt = conn.createStatement()) {
+                ResultSet rs = stmt.executeQuery(selectQuery);
+                while (rs.next()) {
+                    Task task = new Task();
+                    task.id = rs.getInt("id");
+                    task.name = rs.getString("task");
+                    task.status = rs.getString("status");
+                    tasks.add(task);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Error getting tasks", e);
+        }
+        return tasks;
+    }
 }
