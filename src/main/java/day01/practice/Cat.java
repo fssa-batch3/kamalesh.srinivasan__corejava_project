@@ -2,54 +2,59 @@ package day01.practice;
 
 public class Cat {
     // Attributes
-    private int age;
+    private String speaks;
     private String color;
+    private int age;
 
-    // Constructor
-    public Cat(int age, String color) {
-        this.age = age;
-        this.color = color;
-    }
-    
-    
 
     // Getters and setters
-    public int age() {
+    public String speaks() {
+        return speaks;
+    }
+
+    public void setSpeaks(String speaks) {
+        this.speaks = speaks;
+    }
+    
+    public int getAge() {
         return age;
     }
 
-    public void setage(int age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
     public String getColor() {
         return color;
     }
-    
 
     public void setColor(String color) {
         this.color = color;
     }
 
-	public void speak() {
-        System.out.println("Speaks: Meow!");
-    }
-
-    // Main method to create Cat objects
+    // Main method to create Dog objects
     public static void main(String[] args) {
-        // Create two Cat objects
-        Cat Cat1 = new Cat(4, "White");
-        Cat Cat2 = new Cat(3, "Black");
+        // Create two Dog objects
+    	Cat cat1 = new Cat();
+    	cat1.setAge(4);
+    	cat1.setColor("White");
+    	cat1.setSpeaks("Meow!");
+        Cat cat2 = new Cat();
+        cat2.setAge(3);
+        cat2.setColor("Black");
+        cat2.setSpeaks("Meow!");
 
-        // Print the attributes of each Cat
+        // Print the attributes of each Dog
         System.out.println("Cat 1:");
-        System.out.println("Age: " + Cat1.age());
-        System.out.println("Color: " + Cat1.getColor());
-		Cat1.speak();
+        System.out.println("Age: " + cat1.getAge());
+        System.out.println("Color: " + cat1.getColor());
+        System.out.println("Speaks: " + cat1.speaks());
+     
 
         System.out.println("Cat 2:");
-        System.out.println("Age: " + Cat2.age());
-        System.out.println("Color: " + Cat2.getColor());
-		Cat1.speak();
+        System.out.println("Age: " + cat2.getAge());
+        System.out.println("Color: " + cat2.getColor());
+        System.out.println("Speaks: " + cat2.speaks());
+        
     }
 }

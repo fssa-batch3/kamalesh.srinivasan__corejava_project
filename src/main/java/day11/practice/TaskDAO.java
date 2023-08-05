@@ -1,29 +1,31 @@
 package day11.practice;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import day11.solved.ConnectionUtil;
 
-class Task {
-	int id;
-	String name;
-	String status;
-}
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-class TaskDAO {
-	
-	public void createTask(MainExecute task) throws SQLException {
-		// Write code here to get connection
-		  Connection connection = ConnectionUtil.getConnection();
-		// Create insert statement
-	       Statement stmt = connection.createStatement();
-		// Execute insert statement
-	       String query ="INSERT INTO task (id, name, status) VALUES (\"task.id\",\"task.name\", \"task.status\")";
-	        int rows = stmt.executeUpdate(query);
-	        System.out.println("No of rows inserted :" + rows );
-		// close connection
-	        ConnectionUtil.close(connection, stmt, null);
-	} 
+public class TaskDAO {
 
+    public void createTask(Task task) throws DAOException, SQLException {
+        // Step 01: Get connection
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/project", "root", "root");
+        System.out.println(connection);
+
+        // Step 02: Create a Statement
+        String query = "INSERT INTO task (id, task, status) VALUES (?, ?, ?)";
+
+        // Step 03: Execute Insert Query
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setInt(1, task.id);
+        stmt.setString(2, task.name);
+        stmt.setString(3, task.status);
+        stmt.executeUpdate();
+        System.out.println("Row Inserted Successfully");
+
+        //Step 04: close the connection resources
+        ConnectionUtil.close(connection, stmt, null);
+    }
 }
-// Create Junit Test case and test the TaskDao.createTask method

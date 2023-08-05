@@ -4,13 +4,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Frequency {
+public class Frequency{
+    public static void main(String[] args) {
+        for (String arg : args) {
+            System.out.println(arg);
+        }
 
-	public static void main(String[] args) {
-		List<String> list = Arrays.asList(args);
-		int cnt = Collections.frequency(list, "cse");
-		System.out.println(cnt);
-
-	}
-
+        List<String> list = Arrays.asList(args);
+        int cnt = Collections.frequency(list, "cse");
+        System.out.println(cnt);
+    }
 }

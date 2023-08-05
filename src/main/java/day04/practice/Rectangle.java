@@ -35,3 +35,4 @@ class Square extends Rectangle {
         super(side, side);
     }
 }
+

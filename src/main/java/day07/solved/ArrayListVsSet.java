@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class ArrayListVsSet {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		// ArrayList stores duplicates
-		ArrayList<String> cityNames = new ArrayList<String>();
-		cityNames.add("Delhi");
-		cityNames.add("Chennai");
-		cityNames.add("Chennai");
-		cityNames.add("Bangalore");
+        // ArrayList stores duplicates
+        ArrayList<String> cityNames = new ArrayList<String>();
+        cityNames.add("Delhi");
+        cityNames.add("Chennai");
+        cityNames.add("Chennai");
+        cityNames.add("Bangalore");
 
-		System.out.println("Using ArrayList :" + cityNames);
+        System.out.println("Using ArrayList :" + cityNames);
 
-		// Set stores unique elements and ignores duplication
-		HashSet<String> cityNamesSet = new HashSet<>();
-		cityNamesSet.add("Delhi");
-		cityNamesSet.add("Chennai");
-		cityNamesSet.add("Chennai");
-		cityNamesSet.add("Bangalore");
+        // Set stores unique elements and ignores duplication
+        HashSet<String> cityNamesSet = new HashSet<String>();
+        cityNamesSet.add("Delhi");
+        cityNamesSet.add("Chennai");
+        cityNamesSet.add("Chennai");
+        cityNamesSet.add("Bangalore");
 
-		System.out.println("Using Set :" + cityNamesSet);
+        System.out.println("Using Set :" + cityNamesSet);
 
-	}
+    }
 
 }

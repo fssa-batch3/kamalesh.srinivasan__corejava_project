@@ -1,36 +1,36 @@
 package day05.practice;
-import day05.practice.Account;
-
-public class TestATM {
-
-	public static void main(String[] args) {
-
-		Account account1 = new Account("9813265135328765913",20000.18);
-		 ATM Axis = new AxisATM();
-		try{
-			Axis.withdraw(account1, 6000);
-		}
-		catch (Exception e) {
-			System.err.println(e.getMessage());
-		 }
-		Axis.deposit(account1, 20000);
-		System.out.println(Axis.getBalance(account1));
-		
-		 Account account2 = new Account("513455345325234",200400.18);
-			
-		   ATM Icici = new IciciATM();
-		  try{
-			  Icici.withdraw(account2, 200400);
-		  }
-		   catch (Exception e) {
-		  	System.err.println(e.getMessage());
-		  }
-		  Icici.deposit(account2, 100);
-	        System.out.println(Icici.getBalance(account2));  
-		}
-		  
-	}
-
-	
 
 
+public class TestAtm {
+    public static void main(String[] args) {
+        Account axisAccount = new Account("AX001", 2000);
+        ATM axisATM = new AxisATM();
+
+        System.out.println("Initial balance: " + axisAccount.getBalance());
+
+        try {
+            axisATM.withdraw(axisAccount, 2000);
+            System.out.println("Withdrawal successful. Current balance: " + axisAccount.getBalance());
+        } catch (Exception e) {
+            System.out.println("Withdrawal failed: " + e.getMessage());
+        }
+
+        axisATM.deposit(axisAccount, 1000);
+        System.out.println("Deposit successful. Current balance: " + axisAccount.getBalance());
+
+        Account iciciAccount = new Account("IC001", 12000);
+        ATM iciciATM = new IciciATM();
+
+        System.out.println("Initial balance: " + iciciAccount.getBalance());
+
+        try {
+            iciciATM.withdraw(iciciAccount, 5000);
+            System.out.println("Withdrawal successful. Current balance: " + iciciAccount.getBalance());
+        } catch (Exception e) {
+            System.out.println("Withdrawal failed: " + e.getMessage());
+        }
+
+        iciciATM.deposit(iciciAccount, 2000);
+        System.out.println("Deposit successful. Current balance: " + iciciAccount.getBalance());
+    }
+}

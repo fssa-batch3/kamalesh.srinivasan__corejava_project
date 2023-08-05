@@ -1,8 +1,8 @@
-package packageOne;
+
+package day01.solved.packageOne;
 
 public class StaticVsInstance {
 	public static void main(String[] args) {
-//		InstanceVariableDemo.main(args);
 		StaticVariableDemo.main(args);
 		InstanceCounter.main(args);
 		System.out.println(InstanceCounter.instanceCount);
@@ -10,15 +10,12 @@ public class StaticVsInstance {
 }
 
 class StaticVariableDemo {
-	// Declare a static variable
 	public static int staticVariable = 5;
 
 	public static void main(String[] args) {
-		// Access the static variable using the class name
 		StaticVariableDemo myObject = new StaticVariableDemo();
 		StaticVariableDemo myObject2 = new StaticVariableDemo();
 
-		// Access the instance variable using the object reference
 		myObject.staticVariable++;
 		System.out.println(myObject.staticVariable);
 		System.out.println(myObject2.staticVariable);

@@ -1,4 +1,6 @@
-package packageOne;
+
+package day01.solved.packageOne;
+
 
 
 public class Bicycle {

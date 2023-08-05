@@ -2,57 +2,46 @@ package day06.practice;
 
 import java.util.ArrayList;
 
-class addTask {
-
-	private int taskId;
-	String taskName;
-	private String description;
-
-	// Constructor
-	public addTask(int taskId, String taskName, String description) {
-		this.taskId = taskId;
-		this.taskName = taskName;
-		this.description = description;
-	}
-
-
-	@Override
-	public String toString() {
-		return "taskID: " + taskId + ", taskName: " + taskName + ", description: " + description;
-	}
-
-}
-
 public class Task {
+    public String taskName;
 
-	public boolean findTaskByName(String name, ArrayList<addTask> taskList) {
-		boolean check = false;
+    public int priority;
 
-		for (addTask value : taskList) {
-			if (value.taskName.equals(name)) {
-				check = true;
-				break;
-			}
+    public Task(String taskname, int priority) {
+        this.taskName = taskname;
+        this.priority = priority;
+    }
 
-		}
-		return check;
-	}
+    @Override
+    public String toString() {
+        return "Task : " + taskName + ", Priority :" + priority;
+    }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
+        ArrayList<Task> arr = new ArrayList<>();
+        Task task1 = new Task("Kamalesh", 1);
+        Task task2 = new Task("Utchi", 3);
+        Task task3 = new Task("Kishore", 5);
+        arr.add(task1);
+        arr.add(task2);
+        arr.add(task3);
 
-		ArrayList<addTask> taskList = new ArrayList<>();
+        for (Task i : arr) {
+            System.out.println(i);
+        }
 
-		taskList.add(new addTask(1, "Finish report", "Complete the quarterly sales report."));
-		taskList.add(new addTask(2, "Buy groceries", "Purchase items for the week."));
-		taskList.add(new addTask(3, "Study for assessment", "Prepare for the upcoming Java exam."));
+        System.out.println("Is Task Found : " + findTaskByName("Kamalesh", arr));
+        ;
+    }
 
-		for (addTask task : taskList) {
-			System.out.println(task);
-		}
-
-		Task one = new Task();
-
-		boolean result = one.findTaskByName("Finish report", taskList);
-		System.out.println("Your given task present is " + result);
-	}
+    public static boolean findTaskByName(String name, ArrayList<Task> tasks) {
+        boolean found = false;
+        for (Task task : tasks) {
+            if (task.taskName.equals(name)) {
+                found = true;
+                break;
+            }
+        }
+        return found;
+    }
 }

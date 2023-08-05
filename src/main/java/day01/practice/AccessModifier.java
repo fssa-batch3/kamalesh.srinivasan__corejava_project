@@ -1,5 +1,6 @@
 package day01.practice;
 
+
 public class AccessModifier {
 	private static String a = "a";
 	private static String b = "b";

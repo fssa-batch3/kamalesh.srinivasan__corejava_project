@@ -10,16 +10,17 @@ import java.sql.SQLException;
  *
  */
 public class TestMysqlConnectionDemo {
-	/**
-	 * @param args
-	 */
+    /**
+     * @param args
+     */
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		Connection conn = DriverManager.
-														getConnection("jdbc:mysql://localhost:3306/project", 
-																					"root", 
-																					"root");
-		System.out.println(conn);
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        // Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.
+                getConnection("jdbc:mysql://localhost:3306/project",
+                        "root",
+                        "root");
+        System.out.println(conn);
 
-	}
+    }
 }

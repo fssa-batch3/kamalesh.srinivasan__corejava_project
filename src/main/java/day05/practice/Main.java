@@ -1,6 +1,5 @@
 package day05.practice;
 
-
 class Department {
     String deptName;
     int deptId;
@@ -12,7 +11,7 @@ class Department {
 
     @Override
     public String toString() {
-        return ", Department [deptName=" + deptName + ", deptId=" + deptId + "]";
+        return "Department [deptName=" + deptName + ", deptId=" + deptId + "]";
     }
 }
 
@@ -29,14 +28,14 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student name=" + name + ", id=" + id  + department
-        		;
+        return "Student [name=" + name + ", id=" + id + ", department=" + department + "]";
     }
 }
+
 public class Main {
     public static void main(String[] args) {
-        Department department = new Department("CSE", 3433);
-        Student student = new Student("kamalesh", 533, department);
+        Department department = new Department("Maths", 983);
+        Student student = new Student("Kamal", 111, department);
         System.out.println(student);
     }
 }

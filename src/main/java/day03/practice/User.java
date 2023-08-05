@@ -1,25 +1,32 @@
 package day03.practice;
 
 public class User {
-	
-	private String name;
+
 	private String password;
-	private String email;
-	
+    private String name;
+    private String email;
 
-	public static void main(String[] args) {
-
-		User user = new User();
-		User user1 = new User("Kamal","12345678","Kamal@gmail.com");
-
-	}
 	
 	public User() {
-		System.out.println("User");
+		
 	}
 	
-	public User(String name,String password,String email) {
-		System.out.printf("Name ="+ name+"%nPassword ="+password+"%nEmail");
+	public User(String name, String password, String email) {
+		this.email = email;
+		this.name = name;
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 	
 	
